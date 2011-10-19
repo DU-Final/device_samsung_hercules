@@ -24,7 +24,9 @@ MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 
 # Prebuilt libraries that are needed to build open-source libraries
 PRODUCT_COPY_FILES := \\
-    $OUTDIR/proprietary/lib/libcamera.so:obj/lib/libcamera.so
+    $OUTDIR/proprietary/lib/libcamera.so:obj/lib/libcamera.so \\
+    $OUTDIR/proprietary/lib/libaudio.so:obj/lib/libaudio.so \\
+    $OUTDIR/proprietary/lib/libaudiopolicy.so:obj/lib/libaudiopolicy.so
 
 PRODUCT_COPY_FILES += \\
 EOF
