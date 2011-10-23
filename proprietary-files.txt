@@ -14,6 +14,7 @@ bin/qcks
 bin/qmiproxy
 bin/qmuxd
 bin/qrngd
+bin/rild
 bin/rmt_storage
 bin/sec-ril
 etc/firmware/dsps_fluid.b00
@@ -89,6 +90,7 @@ lib/libqdp.so
 lib/libqdsp.so
 lib/libqmiservices.so
 lib/libqmi.so
+lib/libril.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
 lib/libs3cjpeg.so
