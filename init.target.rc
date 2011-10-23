@@ -40,25 +40,174 @@ on boot
     chown system system /sys/class/timed_output/vibrator/enable
 	chmod 0664 /sys/class/timed_output/vibrator/enable    
 
-on emmc-fs
-    mount ext3 /dev/block/mmcblk0p24 /system remount rw
+on early-fs
+# mount mmc partitions
+# mount system rw first to create dirs for firmware
+    mount ext4 /dev/block/mmcblk0p24 /system wait rw barrier=1
+    mount ext4 /dev/block/mmcblk0p26 /cache wait nosuid nodev barrier=1
+    mkdir /efs 0771 system system
+    mount ext4 /dev/block/mmcblk0p21 /efs wait nosuid nodev barrier=1
+    chown radio system /efs
+    chmod 0771 /efs
+    mkdir /efs/imei 0775
+    chown radio system /efs/imei
+    chown radio system /efs/imei/keystr
+    chmod 0775 /efs/imei
+    chmod 0775 /efs/imei/keystr
+
     mkdir /system/etc/firmware/misc 0771 system system
-    wait /dev/block/mmcblk0p13
-    mount vfat /dev/block/mmcblk0p13 /system/etc/firmware/misc ro shortname=lower
     mkdir /system/etc/firmware/misc_mdm 0771 system system
-    wait /dev/block/mmcblk0p17
-    mount vfat /dev/block/mmcblk0p17 /system/etc/firmware/misc_mdm ro shortname=lower
+    mount vfat /dev/block/mmcblk0p13 /system/etc/firmware/misc wait ro shortname=lower
+    mount vfat /dev/block/mmcblk0p17 /system/etc/firmware/misc_mdm wait ro shortname=lower
     exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
+#remount system as ro
     mount ext4 /dev/block/mmcblk0p24 /system remount ro barrier=0
-    mkdir /tombstones 0744 radio system
     mount ext4 /dev/block/mmcblk0p27 /tombstones nosuid nodev barrier=1
-		chown radio system /tombstones
-		mkdir /tombstones/mdm 0744 radio system
-		chown radio system /tombstones/mdm
-		
+    mount ext4 /dev/block/mmcblk0p25 /data wait nosuid nodev usedm barrier=1 noauto_da_alloc
+
+    # We chown/chmod /data again so because mount is run as root + defaults
+    chown system system /data
+    chmod 0771 /data
+    mkdir /tombstones 0744 radio system
+	chown radio system /tombstones
+	mkdir /tombstones/mdm 0744 radio system
+	chown radio system /tombstones/mdm
+
+    # Create dump dir and collect dumps.
+    # Do this before we mount cache so eventually we can use cache for
+    # storing dumps on platforms which do not have a dedicated dump partition.
+
+    # Create log system
+    mkdir /data/log 0777 system system
+    chmod 0777 /data/log 
+    chmod 0662 /dev/log/radio
+    chmod 0662 /dev/log/main
+    chmod 0662 /dev/log/event
+ 
+    mkdir /data/dontpanic
+    chown root log /data/dontpanic
+    chmod 0750 /data/dontpanic
+
+    # Collect apanic data, free resources and re-arm trigger
+    copy /proc/apanic_console /data/dontpanic/apanic_console
+    chown root log /data/dontpanic/apanic_console
+    chmod 0640 /data/dontpanic/apanic_console
+
+    copy /proc/apanic_threads /data/dontpanic/apanic_threads
+    chown root log /data/dontpanic/apanic_threads
+    chmod 0640 /data/dontpanic/apanic_threads
+
+    write /proc/apanic_console 1
+
 on post-fs
+    # once everything is setup, no need to modify /
+    mount rootfs rootfs / ro remount
+
+    # We chown/chmod /data again so because mount is run as root + defaults
+    chown system system /data
+    chmod 0771 /data
+    # Mounting of persist is moved to 'on emmc-fs' and 'on fs' sections
+    # We chown/chmod /persist again so because mount is run as root + defaults
+    chown system system /persist
+    chmod 0771 /persist
+    chmod 0664 /sys/devices/platform/msm_sdcc.1/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.2/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.3/polling
+    chmod 0664 /sys/devices/platform/msm_sdcc.4/polling
+
+    # Chown polling nodes as needed from UI running on system server
+    chown system system /sys/devices/platform/msm_sdcc.1/polling
+    chown system system /sys/devices/platform/msm_sdcc.2/polling
+    chown system system /sys/devices/platform/msm_sdcc.3/polling
+    chown system system /sys/devices/platform/msm_sdcc.4/polling
+
+    # for parameter
+    chown system radio /dev/block/mmcblk0p12
+    chmod 0660 /dev/block/mmcblk0p12
+
     wait /dev/ttyHSL1
     mkdir /data/qcks 0770 system system
+
+# create basic filesystem structure
+    mkdir /data/misc 01771 system misc
+    mkdir /data/misc/bluetoothd 0770 bluetooth bluetooth
+    mkdir /data/misc/bluetooth 0770 system system
+    mkdir /data/misc/keystore 0700 keystore keystore
+    mkdir /data/misc/vpn 0770 system system
+    mkdir /data/misc/systemkeys 0700 system system
+    mkdir /data/misc/vpn/profiles 0770 system system
+    # give system access to wpa_supplicant.conf for backup and restore
+    mkdir /data/misc/wifi 0770 wifi system
+    chmod 0770 /data/misc/wifi
+    mkdir /data/misc/radio 0774 radio radio
+    mkdir /data/misc/wifi/sockets 0770 wifi wifi
+    mkdir /data/misc/dhcp 0770 dhcp dhcp
+    mkdir /data/wifi 0770 wifi wifi
+    chmod 0660 /data/misc/wifi/wpa_supplicant.conf
+    mkdir /data/local 0771 shell shell
+    mkdir /data/local/tmp 0771 shell shell
+    mkdir /data/data 0771 system system
+    mkdir /data/app-private 0771 system system
+    mkdir /data/app 0771 system system
+    mkdir /data/property 0700 root root
+    mkdir /data/radio 0770 radio radio
+    mkdir /data/misc/sensors 0775 root root
+    write /data/system/sensors/settings 0
+    chmod 0664 /data/system/sensors/settings
+
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+    chown bluetooth bluetooth /sys/module/bluetooth_power/parameters/power
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/type
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill0/state
+    chown bluetooth bluetooth /proc/bluetooth/sleep/proto
+    chown system system /sys/module/sco/parameters/disable_esco
+    chmod 0660 /sys/module/bluetooth_power/parameters/power
+    chmod 0660 /sys/class/rfkill/rfkill0/state
+    chmod 0660 /proc/bluetooth/sleep/proto
+    chown bluetooth bluetooth /dev/ttyHS0
+    chmod 0660 /dev/ttyHS0
+    chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
+    chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+
+# permissions for bluetooth.
+    chown bluetooth bluetooth ro.bt.bdaddr_path
+    chown bluetooth bluetooth /dev/uinput
+    chmod 0660 /dev/uinput
+
+    chmod 0660 /sys/class/rfkill/rfkill1/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill1/state
+    chown bluetooth bluetooth /sys/class/rfkill/rfkill1/type
+
+# permission for qc modem silrent reset
+	chown system system /sys/module/subsystem_restart/parameters/restart_level
+
+# permission for fast dormacy for RIL
+	chown radio system /sys/devices/virtual/sec/sdio_al/waketime
+    # create log system
+    mkdir /data/log 0777 system system
+
+    chmod 0777 /data/log
+    chmod 0777 /data/anr
+
+    # create dalvik-cache and double-check the perms
+    mkdir /data/dalvik-cache 0771 system system
+    chown system system /data/dalvik-cache
+    chmod 0771 /data/dalvik-cache
+
+    # create the lost+found directories, so as to enforce our permissions
+    mkdir /data/lost+found 0770
+
+    # double check the perms, in case lost+found already exists, and set owner
+    chown root root /data/lost+found
+    chmod 0770 /data/lost+found
+
+    mkdir /data/misc/bluetooth 0770 bluetooth bluetooth
+
+    # create fota delta dir
+    mkdir /data/fota 0777 root root
+    chmod 0777 /data/fota		
+on post-fs
+
 
 #SISO-PLAYREADY-CHANGES
 #DRM directory creation

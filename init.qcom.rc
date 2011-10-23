@@ -42,7 +42,102 @@ on boot
     chmod 0660 /dev/ttyHS0
     chown bluetooth bluetooth /sys/devices/platform/msm_serial_hs.0/clock
     chmod 0660 /sys/devices/platform/msm_serial_hs.0/clock
+    chown radio system /sys/class/pwm-backlight/device/lcdtype
+    chown radio system /sys/class/pwm-backlight/device/octa_lcdtype
+    chown radio system /sys/class/pwm-backlight/device/lcd_power    
+    chown radio system /sys/class/pwm-backlight/device/acl_set
+	chown radio system /sys/devices/virtual/jack/jack_selector/select_jack
+    chown radio radio /sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_ui_file_cmd
+    chown radio radio /sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_user_select_file_cmd
+    chown radio radio /sys/class/mdnieset_ui/switch_mdnieset_ui/mdnieset_init_file_cmd 
+    chown radio radio /sys/class/mdnieset_outdoor/switch_mdnieset_outdoor/mdnieset_outdoor_file_cmd 
+	chown radio system /sys/devices/virtual/misc/melfas_touchkey/touch_sensitivity
+	chown radio system /sys/devices/virtual/misc/melfas_touchkey/enable_disable 
+	chown radio system /sys/devices/virtual/misc/melfas_touchkey/touch_update
+	chown radio system /sys/devices/virtual/misc/melfas_touchkey/touch_version
+	chown radio system /sys/devices/virtual/misc/melfas_touchkey/brightness	
+	chown radio system /sys/devices/virtual/sec/sec_touchkey/touchkey_firm_version_panel
+	chown radio system /sys/devices/virtual/sec/sec_touchkey/touchkey_firm_version_phone
+	chown radio system /sys/devices/virtual/sec/sec_touchkey/touchkey_firm_update_status
+	chown radio system /sys/devices/virtual/sec/sec_touchkey/touchkey_firm_update	
+	chown radio system /sys/devices/virtual/sec/sec_touchkey/touchkey_brightness	
+	chown radio system /sys/devices/virtual/sec/sec_touchscreen/set_tsp_for_inputmethod
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_firm_version
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_threshould
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_all_refer
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/disp_all_refdata
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_all_delta
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/disp_all_deltadata
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_delta4
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_refer4
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_delta3
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_refer3
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_delta2
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_refer2
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_delta1
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_refer1
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_delta0
+	chown radio system /sys/devices/virtual/sec/qt602240_noise_test/set_refer0
+	chown radio system /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_version_panel
+	chown radio system /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_version_phone
+	chown radio system /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_update_status 
+	chown radio system /sys/devices/virtual/sec/sec_touchscreen/tsp_firm_update 
+ 	chown radio system /sys/devices/virtual/sec/sec_touchscreen/tsp_threshold
+	chown radio system /sys/devices/virtual/sec/gsensorcal/calibration
+	chown radio system /sys/devices/virtual/sec_mhl/switch/mhl_sel
+	chown radio system /sys/class/power_supply/battery/batt_esus_test
+	chown radio system /sys/class/power_supply/battery/batt_test_value
+	chown radio system /sys/class/power_supply/battery/batt_lpm_state
+	chown radio system /sys/class/power_supply/battery/fg_psoc
+	chown radio system /sys/class/power_supply/battery/system_rev
+	chown radio system /sys/class/power_supply/battery/batt_current_adc
+	chown radio system /sys/class/power_supply/battery/batt_test_value
+	chown radio system /sys/class/power_supply/battery/batt_temp_adc_spec
+	chown radio system /sys/class/power_supply/battery/batt_temp_check
+	chown radio system /sys/class/power_supply/battery/batt_full_check
+	chown radio system /sys/class/power_supply/battery/batt_type
+	chown radio system /sys/class/power_supply/battery/batt_lp_charging
+	chown radio system /sys/class/power_supply/battery/charging_source
+	chown radio system /sys/class/power_supply/battery/batt_temp_adc
+	chown radio system /sys/class/power_supply/battery/batt_temp
+	chown radio system /sys/class/power_supply/battery/batt_vfocv
+	chown radio system /sys/class/power_supply/battery/batt_soc
+	chown radio system /sys/class/power_supply/battery/batt_vol
+	chown radio system /sys/class/power_supply/battery/batt_esus_test
+	chown radio radio /sys/class/power_supply/battery/camera
+	chown radio radio /sys/class/power_supply/battery/mp3
+	chown radio radio /sys/class/power_supply/battery/video
+	chown radio radio /sys/class/power_supply/battery/talk_wcdma
+	chown radio radio /sys/class/power_supply/battery/talk_gsm
+	chown radio radio /sys/class/power_supply/battery/data_call
+	chown radio radio /sys/class/power_supply/battery/batt_wifi
+	chown radio radio /sys/class/power_supply/battery/gps
+	chown radio radio /sys/class/power_supply/battery/device_state
+	chown radio system /sys/devices/virtual/sec/sec_misc/rory_control
+	chown radio system /sys/devices/platform/android_usb/UsbMenuSel
+	chown radio system /sys/devices/platform/android_usb/tethering
+	chown radio system /sys/devices/virtual/sec/switch/uart_sel
+	chown radio system /sys/devices/virtual/sec/switch/usb_sel
+	chown radio system /sys/devices/virtual/sec/switch/.usb_lock/enable
+	chown radio system /sys/devices/virtual/sec/switch/device_type
+	chown radio system /sys/devices/virtual/sec/switch/disable_vbus
+	chown radio system /sys/devices/virtual/sec/switch/usb_state
 
+# Add TMO Requirement Values.
+    setprop net.tcp.buffersize.default 4096,87380,393216,4096,16384,393216
+    setprop net.tcp.buffersize.wifi    4096,87380,393216,4096,16384,110208
+    setprop net.tcp.buffersize.umts    4096,87380,393216,4096,16384,393216
+    setprop net.tcp.buffersize.hsupa   4094,87380,393216,4096,16384,393216
+    setprop net.tcp.buffersize.hsdpa   4094,87380,393216,4096,16384,393216
+    setprop net.tcp.buffersize.edge    4096,26280,393216,4096,16384,35040
+    setprop net.tcp.buffersize.gprs    4096,8760,393216,4096,8760,11680
+    setprop net.tcp.buffersize.evdo_b  4094,87380,262144,4096,16384,262144
+    setprop net.tcp.buffersize.hspa    4096,87380,393216,4096,16384,393216
+
+# Assign TCP buffer thresholds to be ceiling value of technology maximums
+# Increased technology maximums should be reflected here.
+    write /proc/sys/net/core/rmem_max  393216
+    write /proc/sys/net/core/wmem_max  393216
     # permissions for NFC
     setprop ro.nfc.port "I2C"
     chmod 0600 /dev/pn544
@@ -148,6 +243,10 @@ on property:init.svc.bluetoothd=stopped
     start amp_unload
     stop btwlancoex
 
+service secril-daemon /system/bin/sec-ril
+    user root
+    group radio cache inet misc audio sdcard_rw diag log
+
 service cnd /system/bin/cnd
     socket cnd stream 660 root radio
 
@@ -157,6 +256,12 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p12 /dev/block/mmc
 
 on property:ro.emmc=1
     start rmt_storage
+
+service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/wifi/bcm_supp.conf
+    class main
+    socket wpa_eth0 dgram 0660 wifi wifi
+    disabled
+    oneshot
 
 service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
     user bluetooth
@@ -238,11 +343,6 @@ service amp_unload /system/bin/amploader -u
     disabled
     oneshot
 
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/wifi/bcm_supp.conf
-    socket wpa_eth0 dgram 0660 wifi wifi
-    disabled
-    oneshot
-
 service dhcpcd /system/bin/dhcpcd -BKLG eth0
     disabled
     oneshot
@@ -306,12 +406,6 @@ on property:init.svc.samsungani=stopped
 on property:init.svc.bootanim=stopped
 #    start qcom-post-boot
     start qcom-wifi
-
-service ckpd /system/bin/CKPD-daemon
-    user system
-    group system radio
-    disabled
-    onrestart /system/bin/log -t RIL-CKPD -p w "CKPD daemon restarted"
 
 on property:ro.service.ckpd.enable=1
     start ckpd

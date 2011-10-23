@@ -44,7 +44,6 @@ PRODUCT_PACKAGES += \
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.target.rc:root/init.target.rc \
-    $(LOCAL_PATH)/init.rc:root/init.rc \
     $(LOCAL_PATH)/init.qcom.lpm_boot.sh:root/init.qcom.lpm_boot.sh \
     $(LOCAL_PATH)/init.qcom.rc:root/init.qcom.rc \
     $(LOCAL_PATH)/init.qcom.sh:root/init.qcom.sh \
