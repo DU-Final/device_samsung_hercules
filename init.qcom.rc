@@ -263,22 +263,6 @@ service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/wifi/bcm
     disabled
     oneshot
 
-service hciattach /system/bin/sh /system/etc/init.qcom.bt.sh
-    user bluetooth
-    group qcom_oncrpc bluetooth net_bt_admin
-    disabled
-    oneshot
-
-service bt-dun /system/bin/dun-server /dev/smd7 /dev/rfcomm0
-    disabled
-    oneshot
-
-service dund /system/bin/sdptool add --channel=1 DUN
-    user bluetooth
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
-
 service bridgemgrd /system/bin/bridgemgrd
     user radio
     group radio
@@ -321,12 +305,6 @@ on property:ro.use_data_netmgrd=false
 # but only if ro.data.large_tcp_window_size property is set.
 on property:ro.data.large_tcp_window_size=true
     write /proc/sys/net/ipv4/tcp_adv_win_scale  1
-
-service btwlancoex /system/bin/sh /system/etc/init.qcom.coex.sh
-    user shell
-    group bluetooth net_bt_admin
-    disabled
-    oneshot
 
 service amp_init /system/bin/amploader -i
     user root
@@ -400,11 +378,8 @@ service qcom-wifi /system/bin/sh /system/etc/init.qcom.wifi.sh
     disabled
     oneshot
 
-on property:init.svc.samsungani=stopped
-    start qcom-post-boot
-
 on property:init.svc.bootanim=stopped
-#    start qcom-post-boot
+    start qcom-post-boot
     start qcom-wifi
 
 on property:ro.service.ckpd.enable=1
