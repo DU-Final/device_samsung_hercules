@@ -55,7 +55,7 @@ PRODUCT_COPY_FILES += \
 # Permissions and features
 PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
-    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus \
+    frameworks/base/data/etc/android.hardware.camera.flash-autofocus.xml:system/etc/permissions/android.hardware.camera.flash-autofocus.xml \
     frameworks/base/data/etc/android.hardware.camera.front.xml:system/etc/permissions/android.hardware.camera.front.xml \
     frameworks/base/data/etc/android.hardware.location.gps.xml:system/etc/permissions/android.hardware.location.gps.xml \
     frameworks/base/data/etc/android.hardware.nfc.xml:system/etc/permissions/android.hardware.nfc.xml \
@@ -95,6 +95,29 @@ endif
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_KERNEL):kernel
+
+# Modules
+PRODUCT_COPY_FILES += \
+    $(LOCAL_PATH)/modules/ansi_cprng.ko:system/lib/modules/ansi_cprng.ko \
+    $(LOCAL_PATH)/modules/bthid.ko:system/lib/modules/bthid.ko \
+    $(LOCAL_PATH)/modules/cpaccess.ko:system/lib/modules/cpaccess.ko \
+    $(LOCAL_PATH)/modules/dal_remotetest.ko:system/lib/modules/dal_remotetest.ko \
+    $(LOCAL_PATH)/modules/dhd.ko:system/lib/modules/dhd.ko \
+    $(LOCAL_PATH)/modules/dma_test.ko:system/lib/modules/dma_test.ko \
+    $(LOCAL_PATH)/modules/evbug.ko:system/lib/modules/evbug.ko \
+    $(LOCAL_PATH)/modules/gspca_main.ko:system/lib/modules/gspca_main.ko \
+    $(LOCAL_PATH)/modules/ksapi.ko:system/lib/modules/ksapi.ko \
+    $(LOCAL_PATH)/modules/lcd.ko:system/lib/modules/lcd.ko \
+    $(LOCAL_PATH)/modules/librasdioif.ko:system/lib/modules/librasdioif.ko \
+    $(LOCAL_PATH)/modules/msm_tsif.ko:system/lib/modules/msm_tsif.ko \
+    $(LOCAL_PATH)/modules/oprofile.ko:system/lib/modules/oprofile.ko \
+    $(LOCAL_PATH)/modules/qcedev.ko:system/lib/modules/qcedev.ko \
+    $(LOCAL_PATH)/modules/qce.ko:system/lib/modules/qce.ko \
+    $(LOCAL_PATH)/modules/qcrypto.ko:system/lib/modules/qcrypto.ko \
+    $(LOCAL_PATH)/modules/scsi_wait_scan.ko:system/lib/modules/scsi_wait_scan.ko \
+    $(LOCAL_PATH)/modules/spidev.ko:system/lib/modules/spidev.ko \
+    $(LOCAL_PATH)/modules/tsif_chrdev.ko:system/lib/modules/tsif_chrdev.ko \
+    $(LOCAL_PATH)/modules/vibrator.ko:system/lib/modules/vibrator.ko
 
 $(call inherit-product, build/target/product/full_base.mk)
 
