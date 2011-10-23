@@ -43,6 +43,7 @@ etc/wifi/nvram_net.txt_murata
 etc/wifi/wifi.conf
 etc/wifi/wl
 etc/wifi/wpa_supplicant.conf
+lib/egl/eglsubAndroid.so
 lib/egl/libEGL_adreno200.so
 lib/egl/libGLESv1_CM_adreno200.so
 lib/egl/libGLESv2_adreno200.so
@@ -69,6 +70,7 @@ lib/libdssock.so
 lib/libdss.so
 lib/libdsutils.so
 lib/libgemini.so
+lib/libgsl.so
 lib/libidl.so
 lib/libloc_api-rpc-qc.so
 lib/libmm-abl.so
@@ -82,6 +84,7 @@ lib/libmvsechocanceler.so
 lib/libnetmgr.so
 lib/liboemcamera.so
 lib/liboncrpc.so
+lib/libOpenVG.so
 lib/libqdp.so
 lib/libqdsp.so
 lib/libqmiservices.so
