@@ -1,10 +1,8 @@
-bin/ATFWD-daemon
 bin/battery_charging
 bin/BCM4330B1_Fix441671_Samsung_U1_TEST_ONLY.hcd
 bin/bridgemgrd
 bin/charging_mode
 bin/dcvsd
-bin/drexe
 bin/ds_fmc_appd
 bin/hdmid
 bin/ks
