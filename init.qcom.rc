@@ -231,9 +231,6 @@ service usbhub_init /system/bin/usbhub_init
 on property:ro.product.device=msm7630_fusion
     start usbhub_init
 
-on property:init.svc.wpa_supplicant=stopped
-    stop dhcpcd
-
 on property:init.svc.bluetoothd=running
     write /sys/devices/virtual/bluetooth/hci0/idle_timeout 7000
     start btwlancoex
@@ -256,12 +253,6 @@ service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p12 /dev/block/mmc
 
 on property:ro.emmc=1
     start rmt_storage
-
-service wpa_supplicant /system/bin/wpa_supplicant -Dwext -ieth0 -c/data/wifi/bcm_supp.conf
-    class main
-    socket wpa_eth0 dgram 0660 wifi wifi
-    disabled
-    oneshot
 
 service bridgemgrd /system/bin/bridgemgrd
     user radio
@@ -318,14 +309,6 @@ service amp_load /system/bin/amploader -l 7000
 
 service amp_unload /system/bin/amploader -u
     user root
-    disabled
-    oneshot
-
-service dhcpcd /system/bin/dhcpcd -BKLG eth0
-    disabled
-    oneshot
-
-service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
     oneshot
 

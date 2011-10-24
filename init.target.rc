@@ -262,15 +262,28 @@ service immvibed /system/bin/immvibed
     group shell
     oneshot
 
-#on property:init.svc.samsungani=stopped
-#    start mpdecision
-
-#on property:init.svc.bootanim=stopped
-#    start mpdecision
-
 on property:ro.baseband=svlte2a
    setprop ro.config.ehrpd true
    setprop ro.config.svlte1x true
 
 service qrngd /system/bin/qrngd -f
     user root
+
+service wpa_supplicant /system/bin/logwrapper /system/bin/wpa_supplicant \
+    -Dwext -ieth0 -c/data/misc/wifi/wpa_supplicant.conf
+#   we will start as root and wpa_supplicant will switch to user wifi
+#   after setting up the capabilities required for WEXT
+#   user wifi
+#   group wifi inet keystore
+    socket wpa_eth0 dgram 660 wifi wifi
+    disabled
+    oneshot
+
+service dhcpcd_eth0 /system/bin/dhcpcd -ABKL eth0
+    disabled
+    oneshot
+
+service iprenew_eth0 /system/bin/dhcpcd -n
+    disabled
+    oneshot
+
