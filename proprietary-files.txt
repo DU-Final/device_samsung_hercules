@@ -47,9 +47,9 @@ lib/egl/libEGL_adreno200.so
 lib/egl/libGLESv1_CM_adreno200.so
 lib/egl/libGLESv2_adreno200.so
 lib/egl/libq3dtools_adreno200.so
+lib/hw/gps.default.so
 lib/hw/lights.msm8660.so
 lib/hw/sensors.default.so
-lib/hw/sensors.goldfish.so
 lib/libacdbloader.so
 lib/libacdbmapper.so
 lib/libakm.so
