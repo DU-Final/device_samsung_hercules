@@ -60,6 +60,7 @@ lib/libaudiopolicy.so
 lib/libaudio.so
 lib/libC2D2.so
 lib/libcamera.so
+lib/libcommondefs.so
 lib/libdiag.so
 lib/libdsi_netctrl.so
 lib/libdsm.so
@@ -91,6 +92,7 @@ lib/libqmi.so
 lib/libril.so
 lib/libril-qc-qmi-1.so
 lib/libril-qcril-hook-oem.so
+lib/librpc.so
 lib/libs3cjpeg.so
 lib/lib_Samsung_Resampler.so
 lib/lib_Samsung_SB_AM_Handset_LPA.so
