@@ -52,6 +52,7 @@ lib/hw/lights.msm8660.so
 lib/hw/sensors.default.so
 lib/libacdbloader.so
 lib/libacdbmapper.so
+lib/libActionShot.so
 lib/libakm.so
 lib/libarccamera.so
 lib/libaudcal.so
@@ -60,6 +61,7 @@ lib/libaudiopolicy.so
 lib/libaudio.so
 lib/libC2D2.so
 lib/libcamera.so
+lib/libcaps.so
 lib/libcommondefs.so
 lib/libdiag.so
 lib/libdsi_netctrl.so
@@ -69,9 +71,12 @@ lib/libdsprofile.so
 lib/libdssock.so
 lib/libdss.so
 lib/libdsutils.so
+lib/libexifa.so
 lib/libgemini.so
 lib/libgsl.so
+lib/libhdr.so
 lib/libidl.so
+lib/libjpega.so
 lib/libloc_api-rpc-qc.so
 lib/libmm-abl.so
 lib/libmmipl.so
@@ -85,6 +90,7 @@ lib/libnetmgr.so
 lib/liboemcamera.so
 lib/liboncrpc.so
 lib/libOpenVG.so
+lib/Panoramax3.so
 lib/libqdp.so
 lib/libqdsp.so
 lib/libqmiservices.so
@@ -99,4 +105,5 @@ lib/lib_Samsung_SB_AM_Handset_LPA.so
 lib/libsamsungSoundboosterLPA.so
 lib/libseccameraadaptor.so
 lib/libseccamera.so
+lib/libsecjpeginterface.so
 lib/libsecril-client.so

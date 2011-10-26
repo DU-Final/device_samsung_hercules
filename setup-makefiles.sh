@@ -26,7 +26,8 @@ MAKEFILE=../../../$OUTDIR/$DEVICE-vendor-blobs.mk
 PRODUCT_COPY_FILES := \\
     $OUTDIR/proprietary/lib/libcamera.so:obj/lib/libcamera.so \\
     $OUTDIR/proprietary/lib/libaudio.so:obj/lib/libaudio.so \\
-    $OUTDIR/proprietary/lib/libaudiopolicy.so:obj/lib/libaudiopolicy.so
+    $OUTDIR/proprietary/lib/libaudiopolicy.so:obj/lib/libaudiopolicy.so \\
+    $OUTDIR/proprietary/lib/libseccameraadaptor.so:obj/lib/libseccameraadaptor.so
 
 PRODUCT_COPY_FILES += \\
 EOF

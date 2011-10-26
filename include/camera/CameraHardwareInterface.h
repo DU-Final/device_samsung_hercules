@@ -147,6 +147,8 @@ namespace android {
         virtual bool         useOverlay() {return false;}
         virtual status_t     setOverlay(const sp<Overlay> &overlay) {return BAD_VALUE;}
         
+        virtual status_t    stopPuttingVirtualMethodsInTheMiddleOfClasses() {return BAD_VALUE;}
+
         /**
          * Stop a previously started preview.
          */
@@ -212,11 +214,6 @@ namespace android {
         
         /** Return the camera parameters. */
         virtual CameraParameters  getParameters() const = 0; // 0x38 + 0x60
-        
-        /**
-         * Unknown function
-         */
-        virtual void ohHaiDeferThanksForFixingOurCam();
         
         /**
          * Send command to camera driver.
