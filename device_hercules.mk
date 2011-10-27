@@ -40,8 +40,11 @@ PRODUCT_PACKAGES += \
     copybit.msm8660 \
     overlay.default \
     liboverlay \
-#    lights.hercules \
-    com.android.future.usb.accessory
+    com.android.future.usb.accessory \
+	LiveWallpapers \
+	LiveWallpapersPicker \
+	MagicSmokeWallpapers \
+	VisualizationWallpapers
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.target.rc:root/init.target.rc \
@@ -67,7 +70,8 @@ PRODUCT_COPY_FILES += \
     frameworks/base/data/etc/android.hardware.telephony.gsm.xml:system/etc/permissions/android.hardware.telephony.gsm.xml \
     frameworks/base/data/etc/android.hardware.touchscreen.multitouch.jazzhand.xml:system/etc/permissions/android.hardware.touchscreen.multitouch.jazzhand.xml \
     frameworks/base/data/etc/android.hardware.usb.accessory.xml:system/etc/permissions/android.hardware.usb.accessory.xml \
-    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml 
+    frameworks/base/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
+   	packages/wallpapers/LivePicker/android.software.live_wallpaper.xml:/system/etc/permissions/android.software.live_wallpaper.xml
 
 # Keylayouts
 PRODUCT_COPY_FILES += \
