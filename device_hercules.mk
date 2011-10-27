@@ -20,6 +20,7 @@ PRODUCT_COPY_FILES += \
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_PROPERTY_OVERRIDES += \
+    ro.telephony.ril_class=samsungqcomm \
     ro.sf.lcd_density=240 \
     ro.com.google.clientidbase=android-samsung \
     ro.com.google.locationfeatures=1 \
