@@ -29,7 +29,7 @@ lpa.use-stagefright=true
 #
 ro.use_data_netmgrd=true
 persist.data_netmgrd_nint=16
-
+mobiledata.interfaces=rmnet0,rmnet_sdio0,rmnet1,rmnet_sdio1,data,gprs
 #
 # system props for SD card emulation of emmc partition
 #
