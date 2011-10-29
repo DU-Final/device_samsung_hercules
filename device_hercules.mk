@@ -91,9 +91,6 @@ PRODUCT_COPY_FILES += \
 # we have enough storage space to hold precise GC data
 PRODUCT_TAGS += dalvik.gc.type-precise
 
-# device uses high-density artwork where available
-PRODUCT_LOCALES += hdpi
-
 ifeq ($(TARGET_PREBUILT_KERNEL),)
 	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
 else
@@ -127,6 +124,9 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/modules/vibrator.ko:system/lib/modules/vibrator.ko
 
 $(call inherit-product, build/target/product/full_base.mk)
+
+# device uses high-density artwork where available
+PRODUCT_LOCALES += hdpi
 
 PRODUCT_BUILD_PROP_OVERRIDES += BUILD_UTC_DATE=0
 PRODUCT_NAME := full_hercules

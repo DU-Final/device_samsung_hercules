@@ -90,7 +90,7 @@ lib/libnetmgr.so
 lib/liboemcamera.so
 lib/liboncrpc.so
 lib/libOpenVG.so
-lib/Panoramax3.so
+lib/libPanoraMax3.so
 lib/libqdp.so
 lib/libqdsp.so
 lib/libqmiservices.so
