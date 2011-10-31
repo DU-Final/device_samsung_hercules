@@ -35,7 +35,7 @@ on boot
     chown system system /sys/class/sec/gsensorcal/calibration
 
 # ko files for vibrator
-    insmod /lib/modules/vibrator.ko
+    insmod /system/lib/modules/vibrator.ko
 
     chown system system /sys/class/timed_output/vibrator/enable
 	chmod 0664 /sys/class/timed_output/vibrator/enable    
