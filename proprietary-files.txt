@@ -1,5 +1,5 @@
 bin/battery_charging
-bin/BCM4330B1_Fix441671_Samsung_U1_TEST_ONLY.hcd
+bin/BCM4330B1_002.001.003.0419.0450.hcd
 bin/bridgemgrd
 bin/charging_mode
 bin/dcvsd
@@ -88,7 +88,6 @@ lib/libmmstereo.so
 lib/libmvsechocanceler.so
 lib/libnetmgr.so
 lib/liboemcamera.so
-lib/liboncrpc.so
 lib/libOpenVG.so
 lib/libPanoraMax3.so
 lib/libqdp.so
