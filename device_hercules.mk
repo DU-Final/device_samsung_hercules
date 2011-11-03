@@ -41,11 +41,14 @@ PRODUCT_PACKAGES += \
     copybit.msm8660 \
     overlay.default \
     liboverlay \
+	libnfc \
+	libnfc_jni \
     com.android.future.usb.accessory \
 	LiveWallpapers \
 	LiveWallpapersPicker \
 	MagicSmokeWallpapers \
-	VisualizationWallpapers
+	VisualizationWallpapers \
+	Nfc
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.target.rc:root/init.target.rc \
