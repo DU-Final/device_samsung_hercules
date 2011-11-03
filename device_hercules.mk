@@ -16,7 +16,7 @@
 
 # The gps config appropriate for this device
 PRODUCT_COPY_FILES += \
-    device/samsung/c1-common/etc/gps.conf:system/etc/gps.conf
+    $(LOCAL_PATH)/gps.conf:system/etc/gps.conf
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_PROPERTY_OVERRIDES += \
