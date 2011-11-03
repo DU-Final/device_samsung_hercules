@@ -61,7 +61,7 @@ PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/lpm.rc:root/lpm.rc \
     $(LOCAL_PATH)/ueventd.rc:root/ueventd.rc \
     $(LOCAL_PATH)/vold.fstab:system/etc/vold.fstab \
-    device/samsung/c1-common/etc/media_profiles.xml:system/etc/media_profiles.xml
+    $(LOCAL_PATH)/media_profiles.xml:system/etc/media_profiles.xml
 
 # Permissions and features
 PRODUCT_COPY_FILES += \
