@@ -6,8 +6,10 @@ bin/dcvsd
 bin/ds_fmc_appd
 bin/hdmid
 bin/ks
+bin/macloader
 bin/mpdecision
 bin/netmgrd
+bin/notified_event
 bin/qcks
 bin/qmiproxy
 bin/qmuxd

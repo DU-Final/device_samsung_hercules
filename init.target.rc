@@ -43,9 +43,11 @@ on boot
 on early-fs
 # mount mmc partitions
 # mount system rw first to create dirs for firmware
-    mount ext4 /dev/block/mmcblk0p24 /system wait rw barrier=1
+    mount ext4 /dev/block/mmcblk0p24 /system wait ro barrier=1
+    exec /system/bin/e2fsck -p /dev/block/mmcblk0p26
     mount ext4 /dev/block/mmcblk0p26 /cache wait nosuid nodev barrier=1
     mkdir /efs 0771 system system
+    exec /system/bin/e2fsck -p /dev/block/mmcblk0p21
     mount ext4 /dev/block/mmcblk0p21 /efs wait nosuid nodev barrier=1
     chown radio system /efs
     chmod 0771 /efs
@@ -55,6 +57,7 @@ on early-fs
     chmod 0775 /efs/imei
     chmod 0775 /efs/imei/keystr
 
+    mount ext4 /dev/block/mmcblk0p23 /system remount,rw
     mkdir /system/etc/firmware/misc 0771 system system
     mkdir /system/etc/firmware/misc_mdm 0771 system system
     mount vfat /dev/block/mmcblk0p13 /system/etc/firmware/misc wait ro shortname=lower
@@ -62,7 +65,9 @@ on early-fs
     exec /system/bin/sh /system/etc/init.qcom.modem_links.sh
 #remount system as ro
     mount ext4 /dev/block/mmcblk0p24 /system remount ro barrier=0
+    exec e2fsck -p /dev/block/mmcblk0p27
     mount ext4 /dev/block/mmcblk0p27 /tombstones nosuid nodev barrier=1
+    exec e2fsck -p /dev/block/mmcblk0p25
     mount ext4 /dev/block/mmcblk0p25 /data wait nosuid nodev usedm barrier=1 noauto_da_alloc
 
     # We chown/chmod /data again so because mount is run as root + defaults
@@ -72,6 +77,8 @@ on early-fs
 	chown radio system /tombstones
 	mkdir /tombstones/mdm 0744 radio system
 	chown radio system /tombstones/mdm
+
+    symlink /system/lib /lib
 
     # Create dump dir and collect dumps.
     # Do this before we mount cache so eventually we can use cache for
@@ -285,5 +292,13 @@ service dhcpcd_eth0 /system/bin/dhcpcd -ABKL eth0
 
 service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
+    oneshot
+
+service notified_event /system/bin/notified_event
+    user system
+    group system
+    socket notified_event stream 0660 root system
+
+service macloader /system/bin/macloader
     oneshot
 
