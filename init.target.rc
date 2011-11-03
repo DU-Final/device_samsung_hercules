@@ -293,6 +293,12 @@ service iprenew_eth0 /system/bin/dhcpcd -n
     disabled
     oneshot
 
+service hciattach /system/bin/logwrapper /system/bin/brcm_patchram_plus --enable_hci --enable_lpm --baudrate 3000000 --patchram /system/bin/BCM4330B1_002.001.003.0419.0450.hcd /dev/ttyHS0
+    user bluetooth
+    group bluetooth net_bt_admin
+    disabled
+    oneshot
+
 service notified_event /system/bin/notified_event
     user system
     group system
