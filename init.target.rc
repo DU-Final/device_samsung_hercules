@@ -43,7 +43,7 @@ on boot
 on early-fs
 # mount mmc partitions
 # mount system rw first to create dirs for firmware
-    mount ext4 /dev/block/mmcblk0p24 /system wait ro barrier=1
+    mount ext4 /dev/block/mmcblk0p24 /system wait rw barrier=1
     exec /system/bin/e2fsck -p /dev/block/mmcblk0p26
     mount ext4 /dev/block/mmcblk0p26 /cache wait nosuid nodev barrier=1
     mkdir /efs 0771 system system
@@ -57,7 +57,6 @@ on early-fs
     chmod 0775 /efs/imei
     chmod 0775 /efs/imei/keystr
 
-    mount ext4 /dev/block/mmcblk0p23 /system remount,rw
     mkdir /system/etc/firmware/misc 0771 system system
     mkdir /system/etc/firmware/misc_mdm 0771 system system
     mount vfat /dev/block/mmcblk0p13 /system/etc/firmware/misc wait ro shortname=lower
