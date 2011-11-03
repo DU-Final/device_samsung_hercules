@@ -33,7 +33,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 $(call inherit-product-if-exists, vendor/samsung/hercules/hercules-vendor.mk)
 
-DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH):/overlay
+DEVICE_PACKAGE_OVERLAYS += $(LOCAL_PATH)/overlay
 
 PRODUCT_PACKAGES += \
     librs_jni \
