@@ -244,9 +244,6 @@ service secril-daemon /system/bin/sec-ril
     user root
     group radio cache inet misc audio sdcard_rw diag log
 
-service cnd /system/bin/cnd
-    socket cnd stream 660 root radio
-
 service rmt_storage /system/bin/rmt_storage /dev/block/mmcblk0p12 /dev/block/mmcblk0p13 /dev/block/mmcblk0p15
     user root
     disabled
@@ -367,11 +364,6 @@ on property:init.svc.bootanim=stopped
 
 on property:ro.service.ckpd.enable=1
     start ckpd
-
-service atfwd /system/bin/ATFWD-daemon
-    user system
-    group system radio
-    onrestart /system/bin/log -t RIL-ATFWD -p w "ATFWD daemon restarted"
 
 service hdmid /system/bin/hdmid
     socket hdmid stream 0660 root system graphics

@@ -263,11 +263,6 @@ service mpdecision /system/bin/mpdecision --no_sleep --avg_comp
     user root
     disabled
 
-service immvibed /system/bin/immvibed
-    user shell
-    group shell
-    oneshot
-
 on property:ro.baseband=svlte2a
    setprop ro.config.ehrpd true
    setprop ro.config.svlte1x true
