@@ -24,6 +24,8 @@ ro.hdmi.enable=true
 #lpa.decode=true
 #lpa.use-stagefright=true
 
+ro.opengles.version=131072
+
 #
 # system props for the data modules
 #
