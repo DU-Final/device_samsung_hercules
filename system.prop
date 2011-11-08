@@ -37,6 +37,10 @@ mobiledata.interfaces=rmnet0,rmnet_sdio0,rmnet1,rmnet_sdio1,data,gprs
 #
 ro.emmc.sdcard.partition=17
 
+# notify vold we have internal and external sd
+ro.additionalmounts=/mnt/emmc
+ro.vold.switchablepair=/mnt/sdcard,/mnt/emmc
+
 #system props for time-services
 persist.timed.enable=true
 

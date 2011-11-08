@@ -79,6 +79,9 @@ on early-fs
 
     symlink /system/lib /lib
 
+    mkdir /mnt/emmc 0000 system system
+    symlink /mnt/emmc /emmc
+
     # Create dump dir and collect dumps.
     # Do this before we mount cache so eventually we can use cache for
     # storing dumps on platforms which do not have a dedicated dump partition.
