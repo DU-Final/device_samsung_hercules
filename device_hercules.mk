@@ -15,8 +15,7 @@
 #
 
 # The gps config appropriate for this device
-PRODUCT_COPY_FILES += \
-    $(LOCAL_PATH)/gps.conf:system/etc/gps.conf
+include device/common/gps/gps_ww_supl.mk
 
 ## (1) First, the most specific values, i.e. the aspects that are specific to GSM
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -52,6 +51,9 @@ PRODUCT_PACKAGES += \
     libnfc_jni \
     Nfc \
     Tag
+
+PRODUCT_PACKAGES += \
+    gps.default
 
 PRODUCT_COPY_FILES += \
     $(LOCAL_PATH)/init.target.rc:root/init.target.rc \
