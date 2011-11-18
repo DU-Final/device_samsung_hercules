@@ -22,7 +22,7 @@ dev.pm.dyn_samplingrate=1
 
 ro.hdmi.enable=true
 lpa.decode=true
-lpa.use-stagefright=true
+#lpa.use-stagefright=true
 
 ro.opengles.version=131072
 
