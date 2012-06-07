@@ -38,11 +38,13 @@ TARGET_OTA_ASSERT_DEVICE := SGH-T989,hercules
 TARGET_USES_OVERLAY := false
 
 # Kernel
-TARGET_PREBUILT_KERNEL      := device/samsung/hercules/prebuilt/kernel
-BOARD_KERNEL_CMDLINE        := androidboot.hardware=qcom usb_id_pin_rework=true
-BOARD_KERNEL_BASE           := 0x40400000
-BOARD_KERNEL_PAGESIZE       := 2048
-BOARD_FORCE_RAMDISK_ADDRESS := 0x41800000
+#   - Needs GB kernel for recovery since ICS kernels cause eMMC corruption
+TARGET_PREBUILT_KERNEL          := device/samsung/hercules/prebuilt/kernel
+TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/hercules/prebuilt/recovery_kernel
+BOARD_KERNEL_CMDLINE            := androidboot.hardware=qcom usb_id_pin_rework=true
+BOARD_KERNEL_BASE               := 0x40400000
+BOARD_KERNEL_PAGESIZE           := 2048
+BOARD_FORCE_RAMDISK_ADDRESS     := 0x41800000
 
 # cat /proc/emmc
 #dev:        size     erasesize name
@@ -65,6 +67,9 @@ BOARD_SDEXT_DEVICE := /dev/block/mmcblk1p2
 BOARD_USES_MMCUTILS := true
 BOARD_HAS_NO_MISC_PARTITION := true
 BOARD_HAS_NO_SELECT_BUTTON := true
+
+# Suppress the WIPE command since it can brick our EMMC
+BOARD_SUPPRESS_EMMC_WIPE := true
 
 # MTP
 BOARD_MTP_DEVICE := "/dev/mtp_usb"
