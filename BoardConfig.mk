@@ -38,13 +38,12 @@ TARGET_OTA_ASSERT_DEVICE := SGH-T989,hercules
 TARGET_USES_OVERLAY := false
 
 # Kernel
-#   - Needs GB kernel for recovery since ICS kernels cause eMMC corruption
-TARGET_PREBUILT_KERNEL          := device/samsung/hercules/prebuilt/kernel
-TARGET_PREBUILT_RECOVERY_KERNEL := device/samsung/hercules/prebuilt/recovery_kernel
-BOARD_KERNEL_CMDLINE            := androidboot.hardware=qcom usb_id_pin_rework=true
-BOARD_KERNEL_BASE               := 0x40400000
-BOARD_KERNEL_PAGESIZE           := 2048
-BOARD_FORCE_RAMDISK_ADDRESS     := 0x41800000
+TARGET_KERNEL_CONFIG        := cyanogenmod_hercules_defconfig
+TARGET_KERNEL_SOURCE        := kernel/samsung/msm8660-common
+BOARD_KERNEL_CMDLINE        := androidboot.hardware=qcom usb_id_pin_rework=true
+BOARD_KERNEL_BASE           := 0x40400000
+BOARD_KERNEL_PAGESIZE       := 2048
+BOARD_FORCE_RAMDISK_ADDRESS := 0x41800000
 
 # cat /proc/emmc
 #dev:        size     erasesize name
