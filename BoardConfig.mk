@@ -74,8 +74,6 @@ BOARD_SUPPRESS_EMMC_WIPE := true
 # MTP
 BOARD_MTP_DEVICE := "/dev/mtp_usb"
 
-BOARD_USE_CUSTOM_RECOVERY_FONT := \"roboto_15x24.h\"
-
 # Workaround for glitches while cropping bypass layers
 TARGET_NO_BYPASS_CROPPING := true
 
